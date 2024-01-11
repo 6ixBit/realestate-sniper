@@ -1,6 +1,7 @@
 'use client';
 
-import Button from '@/components/ui/Button';
+//import Button from '@/components/ui/Button';
+import { Button } from './ui/Button';
 import { Database } from '@/types_db';
 import { postData } from '@/utils/helpers';
 import { getStripe } from '@/utils/stripe-client';
@@ -90,7 +91,7 @@ export default function Pricing({
             .
           </p>
         </div>
-        <LogoCloud />
+        {/* <LogoCloud /> */}
       </section>
     );
 
@@ -253,7 +254,6 @@ export default function Pricing({
             );
           })}
         </div>
-        <LogoCloud />
       </div>
     </section>
   );
@@ -263,7 +263,7 @@ function LogoCloud() {
   return (
     <div>
       <p className="mt-24 text-xs uppercase text-zinc-400 text-center font-bold tracking-[0.3em]">
-        Brought to you by
+        Trusted by
       </p>
       <div className="flex flex-col items-center my-12 space-y-4 sm:mt-8 sm:space-y-0 md:mx-auto md:max-w-2xl sm:grid sm:gap-6 sm:grid-cols-5">
         <div className="flex items-center justify-start">

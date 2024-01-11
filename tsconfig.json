@@ -30,6 +30,12 @@
       }
     ]
   },
+  "paths": {
+    "@/*": ["./*"],
+    "@/components": ["./components"],
+    "@/hooks": ["./hooks"],
+    "@/components/icons": ["./icons"]
+  },
   "include": [
     "next-env.d.ts",
     "**/*.ts",

@@ -1,8 +1,8 @@
 import ManageSubscriptionButton from './ManageSubscriptionButton';
 import {
   getSession,
-  getUserDetails,
-  getSubscription
+  getSubscription,
+  getUserDetails
 } from '@/app/supabase-server';
 import Button from '@/components/ui/Button';
 import { Database } from '@/types_db';
@@ -99,12 +99,7 @@ export default async function Account() {
           footer={
             <div className="flex flex-col items-start justify-between sm:flex-row sm:items-center">
               <p className="pb-4 sm:pb-0">64 characters maximum</p>
-              <Button
-                variant="slim"
-                type="submit"
-                form="nameForm"
-                disabled={true}
-              >
+              <Button variant="slim" type="submit" form="nameForm">
                 {/* WARNING - In Next.js 13.4.x server actions are in alpha and should not be used in production code! */}
                 Update Name
               </Button>
@@ -119,39 +114,6 @@ export default async function Account() {
                 className="w-1/2 p-3 rounded-md bg-zinc-800"
                 defaultValue={userDetails?.full_name ?? ''}
                 placeholder="Your name"
-                maxLength={64}
-              />
-            </form>
-          </div>
-        </Card>
-        <Card
-          title="Your Email"
-          description="Please enter the email address you want to use to login."
-          footer={
-            <div className="flex flex-col items-start justify-between sm:flex-row sm:items-center">
-              <p className="pb-4 sm:pb-0">
-                We will email you to verify the change.
-              </p>
-              <Button
-                variant="slim"
-                type="submit"
-                form="emailForm"
-                disabled={true}
-              >
-                {/* WARNING - In Next.js 13.4.x server actions are in alpha and should not be used in production code! */}
-                Update Email
-              </Button>
-            </div>
-          }
-        >
-          <div className="mt-8 mb-4 text-xl font-semibold">
-            <form id="emailForm" action={updateEmail}>
-              <input
-                type="text"
-                name="email"
-                className="w-1/2 p-3 rounded-md bg-zinc-800"
-                defaultValue={user ? user.email : ''}
-                placeholder="Your email"
                 maxLength={64}
               />
             </form>

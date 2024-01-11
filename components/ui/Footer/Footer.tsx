@@ -1,7 +1,6 @@
-import Link from 'next/link';
-
-import Logo from '@/components/icons/Logo';
 import GitHub from '@/components/icons/GitHub';
+import Logo from '@/components/icons/Logo';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
@@ -30,20 +29,13 @@ export default function Footer() {
             </li>
             <li className="py-3 md:py-0 md:pb-4">
               <Link
-                href="/"
+                href="#pricing"
                 className="text-white transition duration-150 ease-in-out hover:text-zinc-200"
               >
-                About
+                Pricing
               </Link>
             </li>
-            <li className="py-3 md:py-0 md:pb-4">
-              <Link
-                href="/"
-                className="text-white transition duration-150 ease-in-out hover:text-zinc-200"
-              >
-                Careers
-              </Link>
-            </li>
+
             <li className="py-3 md:py-0 md:pb-4">
               <Link
                 href="/"
@@ -93,18 +85,12 @@ export default function Footer() {
       <div className="flex flex-col items-center justify-between py-12 space-y-4 md:flex-row bg-zinc-900">
         <div>
           <span>
-            &copy; {new Date().getFullYear()} ACME, Inc. All rights reserved.
+            &copy; {new Date().getFullYear()} Real Estate Sniper, Inc. All
+            rights reserved.
           </span>
         </div>
         <div className="flex items-center">
-          <span className="text-white">Crafted by</span>
-          <a href="https://vercel.com" aria-label="Vercel.com Link">
-            <img
-              src="/vercel.svg"
-              alt="Vercel.com Logo"
-              className="inline-block h-6 ml-4 text-white"
-            />
-          </a>
+          <span className="text-white">Crafted by</span> Studio Za
         </div>
       </div>
     </footer>
