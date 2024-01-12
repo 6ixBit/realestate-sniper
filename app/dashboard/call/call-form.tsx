@@ -1,11 +1,33 @@
+'use client';
+
 import { CallComboBox } from './call-combo-box';
 import { PromptComboBox } from './prompt-combo-box';
 import { Button } from '@/components/ui/buttoncn';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { useState } from 'react';
 
 export default function CallForm() {
+  const [targetCountryCode, setTargetCountryCode] = useState('');
+  const [fallBackCountryCode, setFallBackCountryCode] = useState('');
+  const [callPrompt, setCallPrompt] = useState('');
+
+  const handleTargetCountryCodeValueChange = (newValue: string) => {
+    setTargetCountryCode(newValue);
+    console.log('Parent (Country Code): ', newValue);
+  };
+
+  const handleFallBackCountryCodeValueChange = (newValue: string) => {
+    setFallBackCountryCode(newValue);
+    console.log('Parent (FallBack): ', newValue);
+  };
+
+  const handleCallPromptValueChange = (newValue: string) => {
+    setCallPrompt(newValue);
+    console.log('Parent (Call Prompt): ', newValue);
+  };
+
   return (
     <div className="bg-zinc-950 flex flex-col space-y-8 p-8 rounded-lg shadow-lg w-full max-w-md">
       <div className="flex items-start space-x-4">
@@ -21,8 +43,8 @@ export default function CallForm() {
           Target Phone Number
         </Label>
 
-        <div className="flex flex-row gap-2">
-          <CallComboBox />
+        <div className="flex flex-row gap-2 items-center">
+          <CallComboBox onValueChange={handleTargetCountryCodeValueChange} />
           <Input
             className="w-full text-gray-900 bg-gray-200"
             id="primary-phone"
@@ -35,8 +57,8 @@ export default function CallForm() {
         <Label className="text-gray-200" htmlFor="fallback-phone">
           Fallback Phone Number
         </Label>
-        <div className="flex flex-row gap-2">
-          <CallComboBox />
+        <div className="flex flex-row gap-2 items-center">
+          <CallComboBox onValueChange={handleFallBackCountryCodeValueChange} />
           <Input
             className="w-full text-gray-900 bg-gray-200"
             id="fallback-phone"
@@ -61,7 +83,7 @@ export default function CallForm() {
           Call Prompt
         </Label>
 
-        <PromptComboBox />
+        <PromptComboBox onValueChange={handleCallPromptValueChange} />
       </div>
       <Button className="w-full bg-green-500 text-white flex justify-center items-center">
         <div className="h-5 w-5 mr-2" />

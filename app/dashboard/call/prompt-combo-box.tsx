@@ -1,5 +1,7 @@
 'use client';
 
+import { callPrompts } from './constants';
+import { callPromptsMapping } from './constants';
 import { Button } from '@/components/ui/buttoncn';
 import {
   Command,
@@ -17,43 +19,19 @@ import { cn } from '@/lib/utils';
 import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons';
 import * as React from 'react';
 
-const callPrompts = [
-  {
-    value: 'intro',
-    label: 'Introduction'
-  },
-  {
-    value: 'follow-up',
-    label: 'Follow-Up'
-  },
-  {
-    value: 'recon',
-    label: 'Recon'
-  }
-];
+interface PromptComboBoxProps {
+  onValueChange: (value: string) => void;
+}
 
-const callPromptsMapping = {
-  intro: {
-    description:
-      'Introduce yourself to a lead, inform them about your services and gather sentiment.'
-  },
-  'follow-up': {
-    description: 'Follow up on a lead that has gone cold'
-  },
-  recon: {
-    description: 'Find out more info about a property'
-  }
-};
-
-type CallPromptKey = keyof typeof callPromptsMapping;
-
-export function PromptComboBox() {
+export function PromptComboBox({ onValueChange }: PromptComboBoxProps) {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState<CallPromptKey>(
-    callPrompts[0].value as CallPromptKey
-  );
+  const [value, setValue] = React.useState<string>(callPrompts[0].value);
 
-  console.log('extra data: ', callPromptsMapping[value]);
+  const handleSelect = (currentValue: string) => {
+    setValue(currentValue);
+    setOpen(false);
+    onValueChange(currentValue);
+  };
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -62,7 +40,7 @@ export function PromptComboBox() {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-full justify-between"
+          className="w-full justify-between bg-gray-200"
         >
           {callPrompts.find((prompt) => prompt.value === value)?.label}
           <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
@@ -79,10 +57,7 @@ export function PromptComboBox() {
                 key={prompt.value}
                 value={prompt.value}
                 // @ts-ignore
-                onSelect={(currentValue: CallPromptKey) => {
-                  setValue(currentValue);
-                  setOpen(false);
-                }}
+                onSelect={handleSelect}
               >
                 <div className="flex justify-between items-center">
                   <span className="font-medium flex-1 text-left px-2">
@@ -96,10 +71,7 @@ export function PromptComboBox() {
                   />
                 </div>
                 <span className="text-gray-500 text-sm text-center">
-                  {
-                    callPromptsMapping[prompt.value as CallPromptKey]
-                      .description
-                  }
+                  {callPromptsMapping[prompt.value].description}
                 </span>
               </CommandItem>
             ))}

@@ -30,10 +30,19 @@ const phoneCodes = [
   { value: '+81', label: '🇯🇵 JP (+81)' }
 ];
 
-export function CallComboBox() {
+interface CallComboBoxProps {
+  onValueChange: (value: string) => void;
+}
+
+export function CallComboBox({ onValueChange }: CallComboBoxProps) {
   const [open, setOpen] = React.useState(false);
-  // Set the initial value to the value of the first phone code
   const [value, setValue] = React.useState(phoneCodes[0].value);
+
+  const handleSelect = (currentValue: string) => {
+    setValue(currentValue);
+    setOpen(false);
+    onValueChange(currentValue);
+  };
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -42,7 +51,7 @@ export function CallComboBox() {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[130px] justify-between"
+          className="w-[130px] justify-between bg-gray-200"
         >
           {/* Display the label corresponding to the current value */}
           {phoneCodes.find((code) => code.value === value)?.label}
@@ -58,10 +67,7 @@ export function CallComboBox() {
               <CommandItem
                 key={code.value}
                 value={code.value}
-                onSelect={(currentValue) => {
-                  setValue(currentValue);
-                  setOpen(false);
-                }}
+                onSelect={handleSelect}
               >
                 {code.label}
                 <CheckIcon

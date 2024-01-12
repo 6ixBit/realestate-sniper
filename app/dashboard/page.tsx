@@ -14,7 +14,6 @@ import {
 } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useEffect } from 'react';
 
 export default function page() {
   const client = useSupabase();
@@ -23,12 +22,6 @@ export default function page() {
     console.log('data: ', data);
     return data;
   });
-
-  useEffect(() => {
-    sesh.then((session) => {
-      console.log('use effect: ', session);
-    });
-  }, [client]);
 
   return (
     <ScrollArea className="h-full">
