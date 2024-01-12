@@ -1,3 +1,9 @@
+import CallForm from './call-form';
+
 export default function Page() {
-  return <h1>Make a call</h1>;
+  return (
+    <>
+      <CallForm />
+    </>
+  );
 }
