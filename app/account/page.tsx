@@ -5,6 +5,7 @@ import {
   getUserDetails
 } from '@/app/supabase-server';
 import Button from '@/components/ui/Button';
+import Navbar from '@/components/ui/Navbar';
 import { Database } from '@/types_db';
 import { createServerActionClient } from '@supabase/auth-helpers-nextjs';
 import { revalidatePath } from 'next/cache';
@@ -64,63 +65,67 @@ export default async function Account() {
   };
 
   return (
-    <section className="mb-32 bg-black">
-      <div className="max-w-6xl px-4 py-8 mx-auto sm:px-6 sm:pt-24 lg:px-8">
-        <div className="sm:align-center sm:flex sm:flex-col">
-          <h1 className="text-4xl font-extrabold text-white sm:text-center sm:text-6xl">
-            Account
-          </h1>
-          <p className="max-w-2xl m-auto mt-5 text-xl text-zinc-200 sm:text-center sm:text-2xl">
-            We partnered with Stripe for a simplified billing.
-          </p>
+    <>
+      <Navbar />
+
+      <section className="mb-32 bg-black">
+        <div className="max-w-6xl px-4 py-8 mx-auto sm:px-6 sm:pt-24 lg:px-8">
+          <div className="sm:align-center sm:flex sm:flex-col">
+            <h1 className="text-4xl font-extrabold text-white sm:text-center sm:text-6xl pt-3 sm:pt-0">
+              Account
+            </h1>
+            <p className="max-w-2xl m-auto mt-5 text-xl text-zinc-200 sm:text-center sm:text-2xl pt-1 sm:pt-3">
+              {user?.email}
+            </p>
+          </div>
         </div>
-      </div>
-      <div className="p-4">
-        <Card
-          title="Your Plan"
-          description={
-            subscription
-              ? `You are currently on the ${subscription?.prices?.products?.name} plan.`
-              : 'You are not currently subscribed to any plan.'
-          }
-          footer={<ManageSubscriptionButton session={session} />}
-        >
-          <div className="mt-8 mb-4 text-xl font-semibold">
-            {subscription ? (
-              `${subscriptionPrice}/${subscription?.prices?.interval}`
-            ) : (
-              <Link href="/">Choose your plan</Link>
-            )}
-          </div>
-        </Card>
-        <Card
-          title="Your Name"
-          description="Please enter your full name, or a display name you are comfortable with."
-          footer={
-            <div className="flex flex-col items-start justify-between sm:flex-row sm:items-center">
-              <p className="pb-4 sm:pb-0">64 characters maximum</p>
-              <Button variant="outline" type="submit" form="nameForm">
-                {/* WARNING - In Next.js 13.4.x server actions are in alpha and should not be used in production code! */}
-                Update Name
-              </Button>
+        <div className="p-4">
+          <Card
+            title="Your Plan"
+            description={
+              subscription
+                ? `You are currently on the ${subscription?.prices?.products?.name} plan.`
+                : 'You are not currently subscribed to any plan.'
+            }
+            footer={<ManageSubscriptionButton session={session} />}
+          >
+            <div className="mt-8 mb-4 text-xl font-semibold">
+              {subscription ? (
+                `${subscriptionPrice}/${subscription?.prices?.interval}`
+              ) : (
+                <Link href="/">Choose your plan</Link>
+              )}
             </div>
-          }
-        >
-          <div className="mt-8 mb-4 text-xl font-semibold">
-            <form id="nameForm" action={updateName}>
-              <input
-                type="text"
-                name="name"
-                className="w-1/2 p-3 rounded-md bg-zinc-800"
-                defaultValue={userDetails?.full_name ?? ''}
-                placeholder="Your name"
-                maxLength={64}
-              />
-            </form>
-          </div>
-        </Card>
-      </div>
-    </section>
+          </Card>
+          <Card
+            title="Your Name"
+            description="Please enter your full name, or a display name you are comfortable with."
+            footer={
+              <div className="flex flex-col items-start justify-between sm:flex-row sm:items-center">
+                <p className="pb-4 sm:pb-0">64 characters maximum</p>
+                <Button variant="slim" type="submit" form="nameForm">
+                  {/* WARNING - In Next.js 13.4.x server actions are in alpha and should not be used in production code! */}
+                  Update Name
+                </Button>
+              </div>
+            }
+          >
+            <div className="mt-8 mb-4 text-xl font-semibold">
+              <form id="nameForm" action={updateName}>
+                <input
+                  type="text"
+                  name="name"
+                  className="w-1/2 p-3 rounded-md bg-zinc-800 text-white"
+                  defaultValue={userDetails?.full_name ?? ''}
+                  placeholder="Your name"
+                  maxLength={64}
+                />
+              </form>
+            </div>
+          </Card>
+        </div>
+      </section>
+    </>
   );
 }
 

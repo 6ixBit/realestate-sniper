@@ -1,23 +1,20 @@
 'use client';
 
+import { Button } from '../buttoncn';
+import s from './Navbar.module.css';
 import { useSupabase } from '@/app/supabase-provider';
 import { useRouter } from 'next/navigation';
-
-import s from './Navbar.module.css';
 
 export default function SignOutButton() {
   const router = useRouter();
   const { supabase } = useSupabase();
   const handleSignOut = async () => {
-    await supabase.auth.signOut()
-    router.refresh()
-  }
+    await supabase.auth.signOut();
+    router.refresh();
+  };
   return (
-    <button
-      className={s.link}
-      onClick={handleSignOut}
-    >
+    <Button variant="destructive" className={s.link} onClick={handleSignOut}>
       Sign out
-    </button>
+    </Button>
   );
 }

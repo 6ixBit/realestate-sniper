@@ -1,6 +1,8 @@
+import { Button } from '../buttoncn';
 import s from './Navbar.module.css';
 import SignOutButton from './SignOutButton';
 import { createServerSupabaseClient } from '@/app/supabase-server';
+import DashboardLogo from '@/components/icons/DashboardLogo';
 import Logo from '@/components/icons/Logo';
 import Link from 'next/link';
 
@@ -33,10 +35,13 @@ export default async function Navbar() {
               )}
             </nav>
           </div>
-          <div className="flex justify-end flex-1 space-x-8">
+          <div className="flex justify-end flex-1 space-x-8 items-center">
             {user && (
               <Link href="/dashboard" className={s.link}>
-                Dashboard
+                <Button variant="secondary">
+                  <p className="px-2">Dashboard</p>
+                  <DashboardLogo />
+                </Button>
               </Link>
             )}
 
