@@ -1,7 +1,7 @@
 'use client';
 
-//import Button from '@/components/ui/Button';
-import { Button } from './ui/Button';
+import CheckLogo from './icons/CheckLogo';
+import Button from '@/components/ui/Button';
 import { Database } from '@/types_db';
 import { postData } from '@/utils/helpers';
 import { getStripe } from '@/utils/stripe-client';
@@ -73,6 +73,8 @@ export default function Pricing({
     }
   };
 
+  console.log('prods: ', products);
+
   if (!products.length)
     return (
       <section className="bg-black">
@@ -88,7 +90,6 @@ export default function Pricing({
             >
               Stripe Dashboard
             </a>
-            .
           </p>
         </div>
         {/* <LogoCloud /> */}
@@ -204,6 +205,7 @@ export default function Pricing({
           </div>
         </div>
         <div className="mt-12 space-y-4 sm:mt-16 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-6 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mx-0 xl:grid-cols-3">
+          <FreePlanComponent />
           {products.map((product) => {
             const price = product?.prices?.find(
               (price) => price.interval === billingInterval
@@ -315,3 +317,32 @@ function LogoCloud() {
     </div>
   );
 }
+
+const FreePlanComponent = () => {
+  const features = ['Basic support', '1 Project', 'Access to community forums'];
+
+  return (
+    <div className="rounded-lg shadow-sm divide-y divide-zinc-600 bg-zinc-900">
+      <div className="p-6">
+        <h2 className="text-2xl font-semibold leading-6 text-white">
+          Free Plan
+        </h2>
+        <p className="mt-4 text-zinc-300">
+          Basic features for personal projects.
+        </p>
+        <ul className="mt-6 space-y-4">
+          {features.map((feature, index) => (
+            <li key={index} className="text-zinc-300 flex items-center gap-2">
+              <CheckLogo stroke="#ec4899" />
+              {feature}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-8">
+          <span className="text-5xl font-extrabold white">$0</span>
+          <span className="text-base font-medium text-zinc-100">/month</span>
+        </p>
+      </div>
+    </div>
+  );
+};

@@ -14,34 +14,34 @@ export default function Footer() {
             <span className="mr-2 border rounded-full border-zinc-700">
               <Logo />
             </span>
-            <span>ACME</span>
+            <span>Real Estate Scout</span>
           </Link>
         </div>
         <div className="col-span-1 lg:col-span-2">
           <ul className="flex flex-col flex-initial md:flex-1">
             <li className="py-3 md:py-0 md:pb-4">
               <Link
-                href="/"
+                href="/dashboard"
                 className="text-white transition duration-150 ease-in-out hover:text-zinc-200"
               >
-                Home
+                Dashboard
               </Link>
             </li>
             <li className="py-3 md:py-0 md:pb-4">
               <Link
-                href="#pricing"
+                href="/account"
                 className="text-white transition duration-150 ease-in-out hover:text-zinc-200"
               >
-                Pricing
+                Account
               </Link>
             </li>
 
             <li className="py-3 md:py-0 md:pb-4">
               <Link
-                href="/"
+                href="/pricing"
                 className="text-white transition duration-150 ease-in-out hover:text-zinc-200"
               >
-                Blog
+                Pricing
               </Link>
             </li>
           </ul>
@@ -71,7 +71,7 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-        <div className="flex items-start col-span-1 text-white lg:col-span-6 lg:justify-end">
+        {/* <div className="flex items-start col-span-1 text-white lg:col-span-6 lg:justify-end">
           <div className="flex items-center h-10 space-x-6">
             <a
               aria-label="Github Repository"
@@ -80,7 +80,7 @@ export default function Footer() {
               <GitHub />
             </a>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="flex flex-col items-center justify-between py-12 space-y-4 md:flex-row bg-zinc-900">
         <div>
@@ -89,8 +89,9 @@ export default function Footer() {
             rights reserved.
           </span>
         </div>
-        <div className="flex items-center">
-          <span className="text-white">Crafted by</span> Studio Za
+        <div className="flex items-center gap-1">
+          <span className="text-white">Crafted by </span>{' '}
+          <strong>Studio Za</strong>
         </div>
       </div>
     </footer>

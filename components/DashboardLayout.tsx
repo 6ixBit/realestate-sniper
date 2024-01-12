@@ -4,7 +4,7 @@
 // import { SettingsIcon } from './icons/SettingsIcon';
 import { CardIcon } from './icons/CardIcon';
 import { HomeIcon } from './icons/HomeIcon';
-import { Button } from './ui/Button';
+import { Button } from './ui/buttoncn';
 import useWindowSize from '@/hooks/useWindowSize';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -39,33 +39,29 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
       >
         <div>
           <div className="flex items-center justify-center gap-1">
-            <Image src="/logo.png" width={40} height={40} alt="ai logo" />
             {!isTablet && (
-              <span className="font-bold text-2xl mx-2">Real Estate Scout</span>
+              <span className="text-black mx-2 text-cente text-3xl font-semibold">
+                R.E Scout
+              </span>
             )}
           </div>
 
           <nav className="mt-8">
-            <Link className={isActive(['/projects']).border} href="/projects">
+            <Link className={isActive(['/calls']).border} href="/calls">
               <HomeIcon className="w-4 h-4" />
               {!isTablet && (
-                <span className={isActive(['/projects']).text}>projects</span>
+                <span className={isActive(['/calls']).text}>Calls</span>
               )}
             </Link>
             <Link
-              className={isActive(['/deck', '/decks']).border}
-              href="/decks"
+              className={isActive(['/campaign', '/campaigns']).border}
+              href="/campaigns"
             >
               <CardIcon className="w-4 h-4" />
               {!isTablet && (
-                <span className={isActive(['/deck', '/decks']).text}>
-                  decks
+                <span className={isActive(['/campaign', '/campaigns']).text}>
+                  Campaigns
                 </span>
-              )}
-            </Link>
-            <Link className={isActive(['/quiz']).border} href="/quiz">
-              {!isTablet && (
-                <span className={isActive(['/quiz']).text}>Quiz</span>
               )}
             </Link>
           </nav>
@@ -74,12 +70,12 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
         <div className="flex items-center mt-8 flex-col">
           {!isTablet && (
             <Button
-              variant="outline"
+              variant="default"
               onClick={() => {
                 console.log('do sumn.');
               }}
             >
-              Change Languages
+              Logout
             </Button>
           )}
 
