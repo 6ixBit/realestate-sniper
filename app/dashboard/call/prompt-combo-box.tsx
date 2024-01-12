@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/buttoncn';
 import {
   Command,
   CommandEmpty,
@@ -34,13 +34,14 @@ const callPrompts = [
 
 const callPromptsMapping = {
   intro: {
-    description: 'Introduce yourself to form a relationship.'
+    description:
+      'Introduce yourself to a lead, inform them about your services and gather sentiment.'
   },
   'follow-up': {
-    description: 'Follow up about a past deal'
+    description: 'Follow up on a lead that has gone cold'
   },
   recon: {
-    description: 'Find out info about a property'
+    description: 'Find out more info about a property'
   }
 };
 
@@ -77,7 +78,8 @@ export function PromptComboBox() {
                 className="flex flex-col gap-1"
                 key={prompt.value}
                 value={prompt.value}
-                onSelect={(currentValue) => {
+                // @ts-ignore
+                onSelect={(currentValue: CallPromptKey) => {
                   setValue(currentValue);
                   setOpen(false);
                 }}
@@ -94,7 +96,10 @@ export function PromptComboBox() {
                   />
                 </div>
                 <span className="text-gray-500 text-sm text-center">
-                  {callPromptsMapping[prompt.value].description}
+                  {
+                    callPromptsMapping[prompt.value as CallPromptKey]
+                      .description
+                  }
                 </span>
               </CommandItem>
             ))}

@@ -42,6 +42,11 @@ export default async function Account() {
     const supabase = createServerActionClient<Database>({ cookies });
     const session = await getSession();
     const user = session?.user;
+
+    if (!user?.id) {
+      return;
+    }
+
     const { error } = await supabase
       .from('users')
       .update({ full_name: newName })

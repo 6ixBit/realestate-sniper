@@ -1,7 +1,7 @@
 'use client';
 
 import CheckLogo from './icons/CheckLogo';
-import { Button } from './ui/button';
+import Button from './ui/Button';
 import { cn } from '@/lib/utils';
 import { Database } from '@/types_db';
 import { postData } from '@/utils/helpers';

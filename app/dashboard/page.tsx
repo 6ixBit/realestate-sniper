@@ -1,3 +1,6 @@
+'use client';
+
+import { useSupabase } from '../supabase-provider';
 import { CalendarDateRangePicker } from '@/components/date-range-picker';
 import { Overview } from '@/components/overview';
 import { RecentSales } from '@/components/recent-sales';
@@ -11,8 +14,22 @@ import {
 } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useEffect } from 'react';
 
 export default function page() {
+  const client = useSupabase();
+
+  const sesh = client.supabase.auth.getSession().then((data) => {
+    console.log('data: ', data);
+    return data;
+  });
+
+  useEffect(() => {
+    sesh.then((session) => {
+      console.log('use effect: ', session);
+    });
+  }, [client]);
+
   return (
     <ScrollArea className="h-full">
       <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
