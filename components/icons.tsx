@@ -19,15 +19,16 @@ import {
   LucideProps,
   Moon,
   MoreVertical,
+  PhoneOutgoing,
   Pizza,
   Plus,
   Settings,
   SunMedium,
   Trash,
-  Twitter,
   User,
   User2Icon,
   UserX2Icon,
+  Users,
   X
 } from 'lucide-react';
 
@@ -35,6 +36,8 @@ export type Icon = LucideIcon;
 
 export const Icons = {
   dashboard: LayoutDashboardIcon,
+  users: Users,
+  phoneOutgoing: PhoneOutgoing,
   logo: Command,
   login: LogIn,
   close: X,
@@ -77,6 +80,5 @@ export const Icons = {
       ></path>
     </svg>
   ),
-  twitter: Twitter,
   check: Check
 };

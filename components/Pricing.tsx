@@ -1,12 +1,12 @@
 'use client';
 
 import CheckLogo from './icons/CheckLogo';
-import Button from '@/components/ui/Button';
+import { Button } from './ui/button';
+import { cn } from '@/lib/utils';
 import { Database } from '@/types_db';
 import { postData } from '@/utils/helpers';
 import { getStripe } from '@/utils/stripe-client';
 import { Session, User } from '@supabase/supabase-js';
-import cn from 'classnames';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
