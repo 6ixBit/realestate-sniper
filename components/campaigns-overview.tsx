@@ -3,47 +3,45 @@ export function CampaignsOverview() {
     <div className="space-y-8 mt-2">
       <div className="flex items-center">
         <div className="ml-4 space-y-1">
-          <p className="text-sm font-medium leading-none">Olivia Martin</p>
+          <p className="text-sm font-medium leading-none">Cold Call Campaign</p>
           <div className="pt-2">
-            <p className="text-sm text-muted-foreground">🇺🇸 (123) 456-7890</p>
+            <p className="text-sm text-muted-foreground">
+              Created - 10th Jan 2024
+            </p>
 
-            <p className="text-sm text-muted-foreground">⌛️ 1 min 36 sec</p>
+            <p className="text-sm text-muted-foreground">Call Targets - 22</p>
+
+            <p className="text-sm text-muted-foreground">Calls so far: 5</p>
           </div>
         </div>
       </div>
+
       <div className="flex items-center">
         <div className="ml-4 space-y-1">
-          <p className="text-sm font-medium leading-none">Jackson Lee</p>
+          <p className="text-sm font-medium leading-none">Email Campaign</p>
           <div className="pt-2">
-            <p className="text-sm text-muted-foreground">🇺🇸 (234) 567-8901</p>
-            <p className="text-sm text-muted-foreground">⌛️ 2 min 45 sec</p>
+            <p className="text-sm text-muted-foreground">
+              Created - 15th Feb 2024
+            </p>
+
+            <p className="text-sm text-muted-foreground">Emails Sent - 150</p>
+
+            <p className="text-sm text-muted-foreground">Responses: 47</p>
           </div>
         </div>
       </div>
+
       <div className="flex items-center">
         <div className="ml-4 space-y-1">
-          <p className="text-sm font-medium leading-none">Isabella Nguyen</p>
+          <p className="text-sm font-medium leading-none">Social Media Blast</p>
           <div className="pt-2">
-            <p className="text-sm text-muted-foreground">🇺🇸 (345) 678-9012</p>
-            <p className="text-sm text-muted-foreground">⌛️ 3 min 12 sec</p>
-          </div>
-        </div>
-      </div>
-      <div className="flex items-center">
-        <div className="ml-4 space-y-1">
-          <p className="text-sm font-medium leading-none">William Kim</p>
-          <div className="pt-2">
-            <p className="text-sm text-muted-foreground">🇺🇸 (456) 789-0123</p>
-            <p className="text-sm text-muted-foreground">⌛️ 1 min 59 sec</p>
-          </div>
-        </div>
-      </div>
-      <div className="flex items-center">
-        <div className="ml-4 space-y-1">
-          <p className="text-sm font-medium leading-none">Sofia Davis</p>
-          <div className="pt-2">
-            <p className="text-sm text-muted-foreground">🇺🇸 (567) 890-1234</p>
-            <p className="text-sm text-muted-foreground">⌛️ 2 min 23 sec</p>
+            <p className="text-sm text-muted-foreground">
+              Initiated - 20th Mar 2024
+            </p>
+
+            <p className="text-sm text-muted-foreground">Posts Created - 30</p>
+
+            <p className="text-sm text-muted-foreground">Engagements: 200</p>
           </div>
         </div>
       </div>
