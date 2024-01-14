@@ -1,7 +1,6 @@
 'use client';
 
 import { useSupabase } from '@/app/supabase-provider';
-import { getSession } from '@/app/supabase-server';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/buttoncn';
 import {
@@ -15,25 +14,22 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export function UserNav() {
-  //   const [session] = await Promise.all([
-  //     getSession(),
-  //   ]);
-
-  const [userSession, setUserSession] = useState<any>();
   const router = useRouter();
   const { supabase } = useSupabase();
 
-  // Fake session object for demonstration purposes
-  const session = {
-    user: {
-      name: 'Hamza',
-      email: 'hamza@example.com',
-      image: "/path/to/hamza's-image.jpg"
-    }
-  };
+  const [session, setSession] = useState<any>();
+
+  useEffect(() => {
+    const fetchSession = async () => {
+      const { data } = await supabase.auth.getSession();
+      setSession(data.session);
+    };
+
+    fetchSession();
+  }, [supabase]);
 
   if (session) {
     return (
@@ -45,7 +41,9 @@ export function UserNav() {
                 src={session.user.image ?? ''}
                 alt={session.user.name ?? ''}
               />
-              <AvatarFallback>{session.user.name[0]}</AvatarFallback>
+              <AvatarFallback>
+                {session.user.email[0].toUpperCase()}
+              </AvatarFallback>
             </Avatar>
           </Button>
         </DropdownMenuTrigger>
@@ -53,7 +51,7 @@ export function UserNav() {
           <DropdownMenuLabel className="font-normal">
             <div className="flex flex-col space-y-1">
               <p className="text-sm font-medium leading-none">
-                {session.user.name}
+                {session.user.name || ''}
               </p>
               <p className="text-xs leading-none text-muted-foreground">
                 {session.user.email}
@@ -63,7 +61,7 @@ export function UserNav() {
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             <DropdownMenuItem>
-              Profile
+              Account
               <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
             </DropdownMenuItem>
             <DropdownMenuItem>
@@ -74,7 +72,6 @@ export function UserNav() {
               Settings
               <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
             </DropdownMenuItem>
-            <DropdownMenuItem>New Team</DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuItem

@@ -1,9 +1,6 @@
-'use client';
-
-import { useSupabase } from '../supabase-provider';
 import { CalendarDateRangePicker } from '@/components/date-range-picker';
 import { Overview } from '@/components/overview';
-import { RecentSales } from '@/components/recent-sales';
+import { RecentCalls } from '@/components/recent-calls';
 import { Button } from '@/components/ui/buttoncn';
 import {
   Card,
@@ -16,13 +13,6 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export default function page() {
-  const client = useSupabase();
-
-  const sesh = client.supabase.auth.getSession().then((data) => {
-    console.log('data: ', data);
-    return data;
-  });
-
   return (
     <ScrollArea className="h-full">
       <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
@@ -157,13 +147,14 @@ export default function page() {
               </Card>
               <Card className="col-span-4 md:col-span-3">
                 <CardHeader>
-                  <CardTitle>Recent Sales</CardTitle>
+                  <CardTitle>Recent Calls</CardTitle>
                   <CardDescription>
-                    You made 265 sales this month.
+                    You made 265 calls this month and saved 2 hours of your
+                    time.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <RecentSales />
+                  <RecentCalls />
                 </CardContent>
               </Card>
             </div>
