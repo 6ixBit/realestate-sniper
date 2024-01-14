@@ -1,6 +1,8 @@
 import {
   AlertTriangle,
   ArrowRight,
+  AudioLines,
+  CalendarClock,
   Check,
   ChevronLeft,
   ChevronRight,
@@ -35,6 +37,8 @@ import {
 export type Icon = LucideIcon;
 
 export const Icons = {
+  audioLines: AudioLines,
+  calendarClock: CalendarClock,
   dashboard: LayoutDashboardIcon,
   users: Users,
   phoneOutgoing: PhoneOutgoing,
