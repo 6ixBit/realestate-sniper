@@ -90,7 +90,7 @@ export default async function Account() {
             }
             footer={<ManageSubscriptionButton session={session} />}
           >
-            <div className="mt-8 mb-4 text-xl font-semibold">
+            <div className="mt-8 mb-4 text-xl font-semibold text-white">
               {subscription ? (
                 `${subscriptionPrice}/${subscription?.prices?.interval}`
               ) : (
@@ -104,7 +104,7 @@ export default async function Account() {
             footer={
               <div className="flex flex-col items-start justify-between sm:flex-row sm:items-center">
                 <p className="pb-4 sm:pb-0">64 characters maximum</p>
-                <Button variant="slim" type="submit" form="nameForm">
+                <Button variant="slim">
                   {/* WARNING - In Next.js 13.4.x server actions are in alpha and should not be used in production code! */}
                   Update Name
                 </Button>
@@ -112,7 +112,7 @@ export default async function Account() {
             }
           >
             <div className="mt-8 mb-4 text-xl font-semibold">
-              <form id="nameForm" action={updateName}>
+              <form id="nameForm">
                 <input
                   type="text"
                   name="name"
@@ -141,8 +141,8 @@ function Card({ title, description, footer, children }: Props) {
   return (
     <div className="w-full max-w-3xl m-auto my-8 border rounded-md p border-zinc-700">
       <div className="px-5 py-4">
-        <h3 className="mb-1 text-2xl font-medium">{title}</h3>
-        <p className="text-zinc-300">{description}</p>
+        <h3 className="mb-1 text-2xl font-medium text-slate-300">{title}</h3>
+        <p className="text-white">{description}</p>
         {children}
       </div>
       <div className="p-4 border-t rounded-b-md border-zinc-700 bg-zinc-900 text-zinc-500">
