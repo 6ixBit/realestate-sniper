@@ -36,8 +36,6 @@ export default async function Account() {
     }).format((subscription?.prices?.unit_amount || 0) / 100);
 
   const updateName = async (formData: FormData) => {
-    'use server';
-
     const newName = formData.get('name') as string;
     const supabase = createServerActionClient<Database>({ cookies });
     const session = await getSession();
@@ -58,8 +56,6 @@ export default async function Account() {
   };
 
   const updateEmail = async (formData: FormData) => {
-    'use server';
-
     const newEmail = formData.get('email') as string;
     const supabase = createServerActionClient<Database>({ cookies });
     const { error } = await supabase.auth.updateUser({ email: newEmail });

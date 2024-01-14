@@ -2,6 +2,8 @@ import './globals.css';
 import SupabaseProvider from './supabase-provider';
 import { PropsWithChildren } from 'react';
 
+export const dynamic = 'force-dynamic';
+
 const meta = {
   title: 'Real Estate Scout - Zero in on potential clients',
   description:
