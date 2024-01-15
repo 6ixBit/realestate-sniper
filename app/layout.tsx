@@ -1,5 +1,6 @@
 import './globals.css';
 import SupabaseProvider from './supabase-provider';
+import { Toaster } from '@/components/ui/sonner';
 import { PropsWithChildren } from 'react';
 
 export const dynamic = 'force-dynamic';
@@ -43,12 +44,13 @@ export const metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
-      <body className="bg-black loading">
+      <body className="bg-black overflow-hidden">
         <SupabaseProvider>
           <main
             id="skip"
             className="min-h-[calc(100dvh-4rem)] md:min-h[calc(100dvh-5rem)]"
           >
+            <Toaster />
             {children}
           </main>
         </SupabaseProvider>
