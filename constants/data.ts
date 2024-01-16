@@ -118,15 +118,21 @@ export const navItems: NavItem[] = [
     label: 'Dashboard'
   },
   {
-    title: 'Single Call',
+    title: 'Calls',
     href: '/dashboard/call',
     icon: 'phoneOutgoing',
-    label: 'call'
+    label: 'calls'
   },
   {
-    title: 'Campaign',
-    href: '/dashboard/campaign',
+    title: 'Campaigns',
+    href: '/dashboard/campaigns',
     icon: 'users',
-    label: 'campaign'
+    label: 'campaigns'
+  },
+  {
+    title: 'Clients',
+    href: '/dashboard/clients',
+    icon: 'user',
+    label: 'clients'
   }
 ];
