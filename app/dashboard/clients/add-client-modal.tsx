@@ -4,14 +4,14 @@ import { Button } from '@/components/ui/buttoncn';
 import { Modal } from '@/components/ui/modal';
 import { useEffect, useState } from 'react';
 
-interface AlertModalProps {
+interface AddClientModalProps {
   isOpen: boolean;
   onClose: () => void;
   onConfirm: () => void;
   loading: boolean;
 }
 
-export const AlertModal: React.FC<AlertModalProps> = ({
+export const AddClientModal: React.FC<AddClientModalProps> = ({
   isOpen,
   onClose,
   onConfirm,
@@ -28,18 +28,14 @@ export const AlertModal: React.FC<AlertModalProps> = ({
   }
 
   return (
-    <Modal
-      title="Are you sure?"
-      description="This action cannot be undone."
-      isOpen={isOpen}
-      onClose={onClose}
-    >
+    <Modal title="" description="" isOpen={isOpen} onClose={onClose}>
+      <div className="flex flex-col">
+        New Client
+        <input type="" />
+      </div>
       <div className="pt-6 space-x-2 flex items-center justify-end w-full">
         <Button disabled={loading} variant="secondary" onClick={onClose}>
-          Cancel
-        </Button>
-        <Button disabled={loading} variant="destructive" onClick={onConfirm}>
-          Continue
+          Add Client
         </Button>
       </div>
     </Modal>

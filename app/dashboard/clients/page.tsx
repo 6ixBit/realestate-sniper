@@ -1,3 +1,6 @@
+'use client';
+
+import { AddClientModal } from './add-client-modal';
 import { ClientTable } from './client-table/client-table';
 import { ClientTableCols } from './client-table/client-table-columns';
 import BreadCrumbs from '@/components/breadcrumbs';
@@ -5,6 +8,7 @@ import { Button } from '@/components/ui/buttoncn';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { prettifyPhoneNumber } from '@/lib/utils';
 import { Plus } from 'lucide-react';
+import { useState } from 'react';
 
 const breadcrumbItems = [{ title: 'Clients', link: '/dashboard/clients' }];
 
@@ -47,8 +51,18 @@ export default function Page({ searchParams }: paramsProps) {
   const page = Number(searchParams.page) || 1;
   const pageCount = Math.ceil(totalUsers / pageLimit);
 
+  const [open, setOpen] = useState(false);
+  const onConfirm = async () => {};
+
   return (
     <ScrollArea className="h-full">
+      <AddClientModal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        onConfirm={onConfirm}
+        loading={false}
+      />
+
       <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
         <BreadCrumbs items={breadcrumbItems} />
         <div className="flex items-center justify-between space-y-2">
@@ -56,7 +70,12 @@ export default function Page({ searchParams }: paramsProps) {
             Clients
           </h2>
           <div className=" md:flex items-center space-x-2">
-            <Button variant="secondary">
+            <Button
+              variant="secondary"
+              onClick={() => {
+                setOpen(true);
+              }}
+            >
               <div className="gap-1 items-center flex flex-row">
                 <Plus size="20" />
                 <p>Add</p>
